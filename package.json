@@ -1,0 +1,44 @@
+{
+  "name": "policemapper-master",
+  "version": "1.0.0",
+  "description": "Simple data visualizer that puts information about police department size next to crime statistics to aid in system based analysis.",
+  "main": "webpack.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --watch --mode=development --colors",
+    "s": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainrues/policemapper.git"
+  },
+  "keywords": [
+    "police",
+    "crime",
+    "data visualization",
+    "neighborhood stats",
+    "over-policing"
+  ],
+  "author": "Rain Rues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rainrues/policemapper/issues"
+  },
+  "homepage": "https://github.com/rainrues/policemapper#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1"
+  }
+}

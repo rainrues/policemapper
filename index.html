@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Police Mapper</title>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ1sVSKZozy7U7kxsWE2D1B6HgT9QsjH8&libraries=visualization" async defer></script>
+
+  <link rel="stylesheet" href="src/css/css-reset.css">
+  <link rel="stylesheet" href="src/css/index.css">
+  <link rel="stylesheet" href="src/css/switch.css">
+</head>
+
+<body id="main">
+  <section id="main-left">
+    <h1 id="visualizer-title">Police Mapper</h1>
+    <p id="visualizer-about">This is a data visualization of crime stats and police 
+      department size. Police department size is determined by the number of neighborhood 
+      coordination officers employed by each precinct. Heat map points are centered on the 
+      location of the primary station for each precinct.
+      Use the switch below to toggle between views and visually explore the data.
+    </p>
+
+
+    <div>
+      <p>Police Precinct Size</p>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div>
+      <select onchange="heatMapConstructor">
+        <option name="selector" id="Police Precinct Size" value="0">Police Precinct Size Only</option>
+        <!-- <option class="selector" id="All Crimes">All Crimes</option> -->
+        <option name="selector" id="Burglaries" value="1">Burglaries</option>
+        <option name="selector" id="Felony Assault" value="2">Felony Assault</option>
+        <option name="selector" id="Grand Larceny" value="3">Grand Larceny</option>
+        <option name="selector" id="Grand Larceny of Auto" value="4">Grand Larceny of Auto</option>
+        <option name="selector" id="Murder" value="5">Murder</option>
+        <option name="selector" id="Rape" value="6">Rape</option>
+        <option name="selector" id="Robbery" value="7">Robbery</option>
+      </select>
+    </div>
+
+    <div id="main-left-bottom">
+      <a href="https://github.com/rainrues"><img className="icon" src="images/298822-32.png" alt="Github icon"></a>
+      <a href="https://www.linkedin.com/in/rain-rues-08560854/"><img className="icon" src="images/107159-32.png" alt="Linkedin icon"></a>
+      <a href="mailto:rainrues@gmail.com"><img className="icon" src="images/1167979-32.png" alt="Email icon"></a>
+    </div>
+    <link rel="stylesheet" href="">
+  </section>
+  <section id="main-right">
+    <div id="map"></div>
+  </section>
+</body>
+
+<script src="./dist/bundle.js"></script>
+</html>
