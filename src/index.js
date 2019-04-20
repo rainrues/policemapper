@@ -21,25 +21,33 @@ const initMap = () => {
 
   map.data.loadGeoJson('https://data.cityofnewyork.us/api/geospatial/78dh-3ptz?method=export&format=GeoJSON');
   // heatMapConstructor(map);
-  const heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
-  heatmap.set(20);
+  // const heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
+  // heatmap.set(20);
 };
 
-// function heatMapConstructor(map, selected) {
-//   // let selected = document.querySelector('option:selected').value;
-//   // if (selected === "1") {
-//   //   const heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
-//   // } else if (selected === "0") {
-//   //   const heatmap = new google.maps.visualization.HeatmapLayer({ data: heatMapData(), map: map });
-//   // }
-//   const heatmap = new google.maps.visualization.HeatmapLayer({ data: heatMapData(), map: map });
+function heatMapConstructor(map, selected) {
+  debugger
+  let heatmap;
+  if (selected === "1") {
+    debugger
+    heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
+  } else if (selected === "0") {
+    heatmap = new google.maps.visualization.HeatmapLayer({ data: heatMapData(), map: map });
+  }
 
-//   heatmap.set(20);
-// }
+  heatmap.set(20);
+
+  return heatmap;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   initMap();
+  let options = document.querySelector('select');
+  let selected = document.querySelector('option:checked').value;
+  debugger
+  options.addEventListener('select', heatMapConstructor(map, selected));
 });
 
 // let options = document.querySelector('select');
+// let selected = document.querySelector('option:checked').value;
 // options.addEventListener('select', heatMapConstructor(map, selected));
