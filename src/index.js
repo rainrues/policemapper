@@ -20,34 +20,34 @@ const initMap = () => {
 
 
   map.data.loadGeoJson('https://data.cityofnewyork.us/api/geospatial/78dh-3ptz?method=export&format=GeoJSON');
-  // heatMapConstructor(map);
-  // const heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
-  // heatmap.set(20);
 };
 
-function heatMapConstructor(map, selected) {
-  debugger
+function policeHeatMapConstructor(map, selected) {
   let heatmap;
-  if (selected === "1") {
-    debugger
-    heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
-  } else if (selected === "0") {
+  if (selected) {
     heatmap = new google.maps.visualization.HeatmapLayer({ data: heatMapData(), map: map });
+    heatmap.set(20);
   }
+  return heatmap
+}
+
+function crimeHeatMapConstructor(map, selected) {
+  let heatmap;
+
+  if (selected === "1") {
+    heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
+  } 
 
   heatmap.set(20);
-
   return heatmap;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initMap();
-  let options = document.querySelector('select');
-  let selected = document.querySelector('option:checked').value;
-  debugger
-  options.addEventListener('select', heatMapConstructor(map, selected));
-});
+  let options = document.querySelector('input');
+  let options2 = document.querySelector('select');
+  let selected2 = document.querySelector('option:checked').value;
 
-// let options = document.querySelector('select');
-// let selected = document.querySelector('option:checked').value;
-// options.addEventListener('select', heatMapConstructor(map, selected));
+  options.addEventListener('select', policeHeatMapConstructor(map, options));
+  options2.addEventListener('select', crimeHeatMapConstructor(map, selected2));
+});
