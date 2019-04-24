@@ -16,23 +16,26 @@
   <section id="main-left">
     <h1 id="visualizer-title">Police Mapper</h1>
     <p id="visualizer-about">This is a data visualization of crime stats and police 
-      department size. Police department size is determined by the number of neighborhood 
+      department size. Department size is determined by the number of neighborhood 
       coordination officers employed by each precinct. Heat map points are centered on the 
       location of the primary station for each precinct.
       Use the switch below to toggle between views and visually explore the data.
     </p>
 
+    <br/>
 
     <div>
-      <p>Show Police Precinct Size</p>
+      <p class="selector-title">Show Police Precinct Size</p>
       <label class="switch">
         <input type="checkbox" checked>
         <span class="slider round"></span>
       </label>
     </div>
 
+    <br/>
+
     <div>
-      <p>Show Crime Stats</p>
+      <p class="selector-title">Show Crime Stats</p>
       <select>
         <option name="selector" id="Police Precinct Size" value="0">Off</option>
         <!-- <option class="selector" id="All Crimes">All Crimes</option> -->
