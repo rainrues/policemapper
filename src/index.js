@@ -2,6 +2,11 @@ import {mapstyle} from "./lib/map-styling";
 import {heatMapData} from "./lib/neighborhood_coordination_officers_data";
 import burglaries from "./lib/burglaries_logic";
 import assaults from "./lib/assaults_logic";
+import grandlarcenys from "./lib/grandlarcenys_logic";
+import autos from "./lib/autos_logic";
+import murders from "./lib/murders_logic";
+import rapes from "./lib/rapes_logic";
+import robberies from "./lib/robberies_logic";
 
 let map;
 
@@ -38,13 +43,27 @@ function crimeHeatMapConstructor(map, selected) {
   if (heatmap) {
     heatmap.setMap(null);
   }
-// debugger
+
   if (selected === "1") {
     heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
     heatmap.set(20);
   } else if (selected === "2") {
-    // debugger
     heatmap = new google.maps.visualization.HeatmapLayer({ data: assaults, map: map });
+    heatmap.set(20);
+  } else if (selected === "3") {
+    heatmap = new google.maps.visualization.HeatmapLayer({ data: grandlarcenys, map: map });
+    heatmap.set(20);
+  } else if (selected === "4") {
+    heatmap = new google.maps.visualization.HeatmapLayer({ data: autos, map: map });
+    heatmap.set(20);
+  } else if (selected === "5") {
+    heatmap = new google.maps.visualization.HeatmapLayer({ data: murders, map: map });
+    heatmap.set(20);
+  } else if (selected === "6") {
+    heatmap = new google.maps.visualization.HeatmapLayer({ data: rapes, map: map });
+    heatmap.set(20);
+  } else if (selected === "7") {
+    heatmap = new google.maps.visualization.HeatmapLayer({ data: robberies, map: map });
     heatmap.set(20);
   }
 
@@ -55,8 +74,9 @@ function crimeHeatMapConstructor(map, selected) {
 document.addEventListener("DOMContentLoaded", () => {
   initMap();
   
-  // let options = document.querySelector('input');
-  // options.addEventListener('select', policeHeatMapConstructor(map, options));
+  // FUTURE FEATURE
+  let options = document.querySelector('input');
+  options.addEventListener('select', policeHeatMapConstructor(map, options));
 
   let form = document.querySelector('form');
   form.onsubmit = formSubmit;
@@ -65,6 +85,5 @@ document.addEventListener("DOMContentLoaded", () => {
 function formSubmit(event) {
   let selected = document.querySelector('option:checked').value;
   crimeHeatMapConstructor(map, selected);
-  // debugger
   return false;
 }
