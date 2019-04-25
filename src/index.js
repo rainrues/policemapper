@@ -1,6 +1,7 @@
 import {mapstyle} from "./lib/map-styling";
 import {heatMapData} from "./lib/neighborhood_coordination_officers_data";
 import burglaries from "./lib/burglaries_logic";
+import assaults from "./lib/assaults_logic";
 
 let map;
 
@@ -37,11 +38,15 @@ function crimeHeatMapConstructor(map, selected) {
   if (heatmap) {
     heatmap.setMap(null);
   }
-
+// debugger
   if (selected === "1") {
     heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
     heatmap.set(20);
-  } 
+  } else if (selected === "2") {
+    // debugger
+    heatmap = new google.maps.visualization.HeatmapLayer({ data: assaults, map: map });
+    heatmap.set(20);
+  }
 
   map.setZoom(map.getZoom());
   return heatmap;
@@ -49,15 +54,17 @@ function crimeHeatMapConstructor(map, selected) {
 
 document.addEventListener("DOMContentLoaded", () => {
   initMap();
-  let options = document.querySelector('input');
-  options.addEventListener('select', policeHeatMapConstructor(map, options));
+  
+  // let options = document.querySelector('input');
+  // options.addEventListener('select', policeHeatMapConstructor(map, options));
 
   let form = document.querySelector('form');
   form.onsubmit = formSubmit;
 });
 
 function formSubmit(event) {
-  let selected2 = document.querySelector('option:checked').value;
-  crimeHeatMapConstructor(map, selected2);
+  let selected = document.querySelector('option:checked').value;
+  crimeHeatMapConstructor(map, selected);
+  // debugger
   return false;
 }
