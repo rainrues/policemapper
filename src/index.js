@@ -23,31 +23,41 @@ const initMap = () => {
 };
 
 function policeHeatMapConstructor(map, selected) {
-  let heatmap;
+  let policeHeatmap;
   if (selected) {
-    heatmap = new google.maps.visualization.HeatmapLayer({ data: heatMapData(), map: map });
-    heatmap.set(20);
+    policeHeatmap = new google.maps.visualization.HeatmapLayer({ data: heatMapData(), map: map });
+    policeHeatmap.set(20);
   }
-  return heatmap
+  map.setZoom(map.getZoom());
+  return policeHeatmap;
 }
 
+let heatmap;
 function crimeHeatMapConstructor(map, selected) {
-  let heatmap;
+  if (heatmap) {
+    heatmap.setMap(null);
+  }
 
   if (selected === "1") {
     heatmap = new google.maps.visualization.HeatmapLayer({ data: burglaries, map: map });
+    heatmap.set(20);
   } 
 
-  heatmap.set(20);
+  map.setZoom(map.getZoom());
   return heatmap;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initMap();
   let options = document.querySelector('input');
-  let options2 = document.querySelector('select');
-  let selected2 = document.querySelector('option:checked').value;
-
   options.addEventListener('select', policeHeatMapConstructor(map, options));
-  options2.addEventListener('select', crimeHeatMapConstructor(map, selected2));
+
+  let form = document.querySelector('form');
+  form.onsubmit = formSubmit;
 });
+
+function formSubmit(event) {
+  let selected2 = document.querySelector('option:checked').value;
+  crimeHeatMapConstructor(map, selected2);
+  return false;
+}
