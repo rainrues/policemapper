@@ -24,14 +24,4 @@ Simple data visualizer that puts information about police department size next t
 + https://wireframe.cc/pro/pp/923bec6fa240364
 
 ### Backend
-+ Any data I can not find using an API will be sourced from https://www1.nyc.gov/site/nypd/bureaus/patrol/precincts-landing.page and saved on Google Firebase
-
-### Timeframe
-+ Create front end with integrated map by end of day 4/11
-+ Complete heat map for police precinct size by end of day 4/12
-+ Complete heat map for overall crime rate by 9am 4/15
-
-### Bonus Features
-+ Complete heat maps for specific crime categories and create side bar for users to toggle between views
-+ Clicking on a precinct will popup a modal with additional precinct and crime data
-+ Crime data will be visualized by an animated simulation rather than by a heat map
++ All crime data came from above APIs except for police precinct size which was manually input and sourced from: https://www1.nyc.gov/site/nypd/bureaus/patrol/precincts-landing.page
